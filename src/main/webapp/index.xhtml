@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Informations de Laureat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 20px;
+            color: #333;
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 30px;
+            background-color: #fff;
+            width: 60%;
+            margin: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .form-actions button {
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 45%;
+            margin: 5px;
+        }
+        .form-actions .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .form-actions .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .form-actions .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .form-actions .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .required {
+            color: red;
+            margin-left: 5px;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div class="form-container">
+        <h2>Informations de Laureat</h2>
+        <h:form>
+            <div class="form-group">
+                <label for="nom">Nom<span class="required">*</span></label>
+                <h:inputText id="nom" value="#{laureatBean.laureat.nom}" class="form-control" required="true"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prenom<span class="required">*</span></label>
+                <h:inputText id="prenom" value="#{laureatBean.laureat.prenom}" class="form-control" required="true"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="tel">Numero de Telephone<span class="required">*</span></label>
+                <h:inputText id="tel" value="#{laureatBean.laureat.tel}" class="form-control" required="true"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="adresse">Adresse<span class="required">*</span></label>
+                <h:inputTextarea id="adresse" value="#{laureatBean.laureat.adresse}" class="form-control" required="true"></h:inputTextarea>
+            </div>
+            <div class="form-group">
+                <label for="pays">Pays<span class="required">*</span></label>
+                <h:inputText id="pays" value="#{laureatBean.laureat.pays}" class="form-control" required="true"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="ville">Ville<span class="required">*</span></label>
+                <h:inputText id="ville" value="#{laureatBean.laureat.ville}" class="form-control" required="true"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="entreprise">Entreprise/Organisation<span class="required">*</span></label>
+                <h:inputText id="entreprise" value="#{laureatBean.laureat.entreprise}" class="form-control" required="true"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="fonction">Fonction<span class="required">*</span></label>
+                <h:inputText id="fonction" value="#{laureatBean.laureat.fonction}" class="form-control" required="true"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="email">Email<span class="required">*</span></label>
+                <h:inputText id="email" value="#{laureatBean.laureat.email}" class="form-control" required="true"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <h:inputText id="age" value="#{laureatBean.laureat.age}" class="form-control"></h:inputText>
+            </div>
+            <div class="form-group">
+                <label for="facebook">Contact Facebook</label>
+                <h:inputText id="facebook" value="#{laureatBean.laureat.facebook}" class="form-control"></h:inputText>
+            </div>
+
+            <div class="form-actions">
+                <h:commandButton value="Valider" action="#{laureatBean.saveLaureat}" class="btn-primary"/>
+                <h:commandButton value="Annuler" type="reset" class="btn-secondary"/>
+            </div>
+            <h:panelGrid columns="3" cellpadding="5" styleClass="table-container">
+                <h:dataTable value="#{laureatBean.laureats}" var="laureat" border="1">
+                    <f:facet name="header">
+                        <h:outputText value="Nom" />
+                    </f:facet>
+                    <h:column>
+                        <h:outputText value="#{laureat.nom}" />
+                    </h:column>
+
+                    <f:facet name="header">
+                        <h:outputText value="Prenom" />
+                    </f:facet>
+                    <h:column>
+                        <h:outputText value="#{laureat.prenom}" />
+                    </h:column>
+
+                    <f:facet name="header">
+                        <h:outputText value="Email" />
+                    </f:facet>
+                    <h:column>
+                        <h:outputText value="#{laureat.email}" />
+                    </h:column>
+
+                    <f:facet name="header">
+                        <h:outputText value="Entreprise" />
+                    </f:facet>
+                    <h:column>
+                        <h:outputText value="#{laureat.entreprise}" />
+                    </h:column>
+
+                    <f:facet name="header">
+                        <h:outputText value="Fonction" />
+                    </f:facet>
+                    <h:column>
+                        <h:outputText value="#{laureat.fonction}" />
+                    </h:column>
+                </h:dataTable>
+            </h:panelGrid>
+        </h:form>
+
+    </div>
+</h:body>
+</html>
